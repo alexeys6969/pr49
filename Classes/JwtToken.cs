@@ -8,7 +8,7 @@ namespace REST_API_Shashin.Classes
 {
     public class JwtToken
     {
-        static byte[] Key = Encoding.UTF8.GetBytes("BEBEBEBEBEBEBEBEBEBE");
+        static byte[] Key = Encoding.UTF8.GetBytes("BEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBE");
         public static string Generate(User user)
         {
             JwtSecurityTokenHandler TokenHandler = new JwtSecurityTokenHandler();
