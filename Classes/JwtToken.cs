@@ -27,5 +27,27 @@ namespace REST_API_Shashin.Classes
             SecurityToken Token = TokenHandler.CreateToken(tokenDescriptor);
             return TokenHandler.WriteToken(Token);
         }
+        public static int? GetUserIdFromToken(string token)
+        {
+            try
+            {
+                JwtSecurityTokenHandler TokenHandler = new JwtSecurityTokenHandler();
+                TokenHandler.ValidateToken(token, new TokenValidationParameters
+                {
+                    ValidateIssuerSigningKey = true,
+                    IssuerSigningKey = new SymmetricSecurityKey(Key),
+                    ValidateIssuer = false,
+                    ValidateAudience = false,
+                    ClockSkew = TimeSpan.Zero
+                }, out SecurityToken ValidatedToken);
+                JwtSecurityToken JwtToken = (JwtSecurityToken)ValidatedToken;
+                string EmployeeId = JwtToken.Claims.First(x => x.Type == "UserId").Value;
+                return int.Parse(EmployeeId);
+            }
+            catch
+            {
+                return null;
+            }
+        }
     }
 }

@@ -8,6 +8,8 @@ namespace REST_API_Shashin.Classes
     {
         public DbSet<User> Users { get; set; }
         public DbSet<Dishes> Dishes { get; set; }
+        public DbSet<Order> Orders { get; set; }
+        public DbSet<OrderItem> OrderItem { get; set; }
         public DBManager() => Database.EnsureCreated();
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
