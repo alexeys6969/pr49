@@ -7,6 +7,7 @@ namespace REST_API_Shashin.Classes
     public class DBManager : DbContext
     {
         public DbSet<User> Users { get; set; }
+        public DbSet<Dishes> Dishes { get; set; }
         public DBManager() => Database.EnsureCreated();
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
